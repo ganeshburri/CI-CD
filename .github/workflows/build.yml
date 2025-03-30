@@ -9,8 +9,9 @@ jobs:
   build: # Name of the job
     runs-on: ubuntu-latest # Specify the runner environment as the latest Ubuntu version
     steps:
-      - name: Clone the repository
       - uses: actions/checkout@v3 # Check out the repository code
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js
         uses: actions/setup-node@v3 # Set up Node.js environment
