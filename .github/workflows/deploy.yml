@@ -41,19 +41,19 @@ jobs:
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
-      # Hostname or IP address of the EC2 instance
-      host: ${{ secrets.SSH_HOST }}
-      # Username for SSH login
-      username: ${{ secrets.SSH_USERNAME }}
-      # Private SSH key stored in GitHub Secrets
-      key: ${{ secrets.SSH_KEY }}
-      # Commands to execute on the EC2 instance
-      script: |
-        # Pull the latest Docker image from Docker Hub
-        sudo docker pull ganeshvarma1/ci-cd:latest
-        # Stop the currently running container (if any)
-        sudo docker stop web-app || true
-        # Remove the stopped container (if any)
-        sudo docker rm web-app || true
-        # Run a new container with the latest image
-        sudo docker run -d --name web-app -p 3005:3000 ganeshvarma1/ci-cd:latest
+        # Hostname or IP address of the EC2 instance
+        host: ${{ secrets.SSH_HOST }}
+        # Username for SSH login
+        username: ${{ secrets.SSH_USERNAME }}
+        # Private SSH key stored in GitHub Secrets
+        key: ${{ secrets.SSH_KEY }}
+        # Commands to execute on the EC2 instance
+        script: |
+          # Pull the latest Docker image from Docker Hub
+          sudo docker pull ganeshvarma1/ci-cd:latest
+          # Stop the currently running container (if any)
+          sudo docker stop web-app || true
+          # Remove the stopped container (if any)
+          sudo docker rm web-app || true
+          # Run a new container with the latest image
+          sudo docker run -d --name web-app -p 3005:3000 ganeshvarma1/ci-cd:latest
